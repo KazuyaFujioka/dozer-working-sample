@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://dozer.sourceforge.net"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <mapping type="one-way" map-id="primitiveToModel">
+        <class-a>java.lang.String</class-a>
+        <class-b is-accessible="true">com.example.domain.model.leisure.genre.Genre</class-b>
+        <field>
+            <a>this</a>
+            <b>name.text</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way" map-id="modelToModel">
+        <class-a is-accessible="true">com.example.infrastructure.datasource.leisure.genre.JsonOfGenreName</class-a>
+        <class-b is-accessible="true">com.example.domain.model.leisure.genre.Genre</class-b>
+        <field>
+            <a>text</a>
+            <b>name.text</b>
+        </field>
+    </mapping>
+
+    <mapping type="one-way" map-id="listToModel">
+        <class-a>java.util.List</class-a>
+        <class-b is-accessible="true">com.example.domain.model.leisure.genre.Genres</class-b>
+        <field map-id="modelToModel">
+            <a type="iterate">this</a>
+            <b>list</b>
+            <a-hint>java.util.List</a-hint>
+        </field>
+    </mapping>
+
+    <mapping type="one-way" map-id="mapToModel">
+        <class-a>java.util.Map</class-a>
+        <class-b is-accessible="true">com.example.domain.model.leisure.genre.Genre</class-b>
+        <field>
+            <a key="text">this</a>
+            <b>name.text</b>
+        </field>
+    </mapping>
+
+</mappings>

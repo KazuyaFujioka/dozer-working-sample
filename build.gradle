@@ -1,0 +1,39 @@
+apply plugin: 'base'
+
+subprojects {
+    buildscript {
+        ext {
+            springBootVersion = '1.5.4.RELEASE'
+            dozerVersion = '5.5.1'
+            encoding = 'UTF-8'
+            compatibility = 1.8
+        }
+        repositories {
+            mavenCentral()
+            jcenter()
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'groovy'
+
+    sourceCompatibility = compatibility
+    targetCompatibility = compatibility
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile group: "org.springframework.boot", name: "spring-boot-starter-web", version: "${springBootVersion}"
+        compile group: "org.springframework.boot", name: "spring-boot-devtools", version: "${springBootVersion}"
+        compile group: "net.sf.dozer", name: "dozer", version: "${dozerVersion}"
+        compile group: "net.sf.dozer", name: "dozer-spring", version: "${dozerVersion}"
+
+        testCompile group: "org.springframework.boot", name: "spring-boot-starter-test", version: "${springBootVersion}"
+    }
+}
